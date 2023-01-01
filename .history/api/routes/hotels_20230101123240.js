@@ -1,7 +1,6 @@
 import express from "express";
 import {
   createHotel,
-  deleteHotel,
   getHotel,
   getHotels,
   updateHotel,
@@ -15,7 +14,14 @@ router.post("/", createHotel);
 //UPDATE
 router.put("/:id", updateHotel);
 //DELETE
-router.delete("/:id", deleteHotel);
+router.delete("/:id", async (req, res) => {
+  try {
+    await Hotel.findByIdAndDelete(req.params.id);
+    res.status(200).json("Hotel has been deleted");
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
 //GET
 router.get("/:id", getHotel);
 //GET ALL
