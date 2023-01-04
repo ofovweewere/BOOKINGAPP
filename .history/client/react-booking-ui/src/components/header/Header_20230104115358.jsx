@@ -104,16 +104,16 @@ const Header = ({ type }) => {
                 <span
                   onClick={() => setOpenDate(!openDate)}
                   className="headerSearchText"
-                >{`${format(dates[0].startDate, "MM/dd/yyyy")} to ${format(
-                  dates[0].endDate,
+                >{`${format(date[0].startDate, "MM/dd/yyyy")} to ${format(
+                  date[0].endDate,
                   "MM/dd/yyyy"
                 )}`}</span>
                 {openDate && (
                   <DateRange
                     editableDateInputs={true}
-                    onChange={(item) => setDates([item.selection])}
+                    onChange={(item) => setDate([item.selection])}
                     moveRangeOnFirstSelection={false}
-                    ranges={dates}
+                    ranges={date}
                     className="date"
                     minDate={new Date()}
                   />

@@ -23,6 +23,7 @@ const Hotel = () => {
   const [slideNumber, setSlideNumber] = useState(0);
   const [open, setOpen] = useState(false);
   const [openModal, setOpenModal] = useState(false);
+
   const { data, loading, error } = useFetch(`/hotels/${id}`);
 
   // const { user } = useContext(AuthContext);
@@ -34,6 +35,7 @@ const Hotel = () => {
   function dayDifference(date1, date2) {
     const timeDiff = Math.abs(date2.getTime() - date1.getTime());
     const diffDays = Math.ceil(timeDiff / MILLISECONDS_PER_DAY);
+    // console.log("diffDays", diffDays, data, loading, options.room);
     return diffDays;
   }
 
