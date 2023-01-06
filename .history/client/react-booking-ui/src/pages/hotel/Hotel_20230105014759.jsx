@@ -57,6 +57,7 @@ const Hotel = () => {
   };
 
   const handleClick = () => {
+    console.log("here called");
     if (user) {
       setOpenModal(true);
     } else {

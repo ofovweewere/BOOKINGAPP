@@ -101,15 +101,16 @@ export const countByType = async (req, res, next) => {
 };
 
 export const getHotelRooms = async (req, res, next) => {
+  console.log("here called for groom", req.params.id);
   try {
     const hotel = await Hotel.findById(req.params.id);
-
+    console.log("here called 2", hotel);
     const list = await Promise.all(
       hotel.rooms.map((room) => {
         return Room.findById(room);
       })
     );
-
+    console.log("here called 3");
     res.status(200).json(list);
   } catch (err) {
     next(err);
