@@ -8,7 +8,7 @@ import axios from "axios";
 
 const Datatable = ({ columns }) => {
   const location = useLocation();
-  const path = location.pathname.split("/")[1];
+  const path = location.pathname.split("/")[2];
   const [list, setList] = useState();
   const { data, loading, error } = useFetch(`/${path}`);
 
@@ -18,7 +18,7 @@ const Datatable = ({ columns }) => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`/${path}/${id}`);
+      await axios.delete(`/api/${path}/${id}`);
       setList(list.filter((item) => item._id !== id));
     } catch (err) {}
   };
@@ -31,7 +31,7 @@ const Datatable = ({ columns }) => {
       renderCell: (params) => {
         return (
           <div className="cellAction">
-            <Link to="/users/test" style={{ textDecoration: "none" }}>
+            <Link to="/admin/users/test" style={{ textDecoration: "none" }}>
               <div className="viewButton">View</div>
             </Link>
             <div
@@ -49,7 +49,7 @@ const Datatable = ({ columns }) => {
     <div className="datatable">
       <div className="datatableTitle">
         {path}
-        <Link to={`/${path}/new`} className="link">
+        <Link to={`/admin/${path}/new`} className="link">
           Add New
         </Link>
       </div>

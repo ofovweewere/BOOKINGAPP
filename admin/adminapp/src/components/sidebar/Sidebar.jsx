@@ -20,7 +20,7 @@ const Sidebar = () => {
   return (
     <div className="sidebar">
       <div className="top">
-        <Link to="/" style={{ textDecoration: "none" }}>
+        <Link to="/admin" style={{ textDecoration: "none" }}>
           <span className="logo">lamadmin</span>
         </Link>
       </div>
@@ -33,19 +33,19 @@ const Sidebar = () => {
             <span>Dashboard</span>
           </li>
           <p className="title">LISTS</p>
-          <Link to="/users" style={{ textDecoration: "none" }}>
+          <Link to="/admin/users" style={{ textDecoration: "none" }}>
             <li>
               <PersonOutlineIcon className="icon" />
               <span>Users</span>
             </li>
           </Link>
-          <Link to="/hotels" style={{ textDecoration: "none" }}>
+          <Link to="/admin/hotels" style={{ textDecoration: "none" }}>
             <li>
               <StoreIcon className="icon" />
               <span>Hotels</span>
             </li>
           </Link>
-          <Link to="/rooms" style={{ textDecoration: "none" }}>
+          <Link to="/admin/rooms" style={{ textDecoration: "none" }}>
             <li>
               <CreditCardIcon className="icon" />
               <span>Rooms</span>

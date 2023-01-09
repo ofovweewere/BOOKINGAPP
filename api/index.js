@@ -7,8 +7,14 @@ import hotelsRoute from "./routes/hotels.js";
 import roomsRoute from "./routes/rooms.js";
 import cookieParser from "cookie-parser";
 import cors from "cors";
+// Accessing the path module
+import path from "path";
+import { fileURLToPath } from "url";
 const app = express();
 dotenv.config();
+const __filename = fileURLToPath(import.meta.url);
+
+const __dirname = path.dirname(__filename);
 mongoose.set("strictQuery", true);
 const connect = async () => {
   try {
@@ -42,7 +48,27 @@ app.use((err, req, res, next) => {
     stack: err.stack,
   });
 });
-app.listen(3030, () => {
+//Step 1:
+app.use(
+  express.static(path.resolve(__dirname, "../client/react-booking-ui/build"))
+);
+app.use(express.static(path.resolve(__dirname, "../admin/adminapp/build")));
+// Step 2:
+
+// Step 2:
+app.get("/admin*", function (request, response) {
+  response.sendFile(
+    path.resolve(__dirname, "../admin/adminapp/build", "index.html")
+  );
+});
+
+app.get("*", function (req, res) {
+  res.sendFile(
+    path.resolve(__dirname, "../client/react-booking-ui", "build", "index.html")
+  );
+});
+const PORT = process.env.PORT || 3030;
+app.listen(PORT, () => {
   connect();
   console.log("Node server started");
 });

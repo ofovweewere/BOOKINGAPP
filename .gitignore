@@ -1,0 +1,5 @@
+/admin/adminapp/build
+/admin/adminapp/node_modules
+/client/react-booking-ui/build
+/client/react-booking-ui/node_modules
+.history
