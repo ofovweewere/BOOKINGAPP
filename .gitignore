@@ -3,3 +3,4 @@
 /client/react-booking-ui/build
 /client/react-booking-ui/node_modules
 .history
+.env
